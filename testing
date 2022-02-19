@@ -1,0 +1,25 @@
+#!/bin/bash 
+# The purpose of this script is to set the login window to show a username and password
+field instead of names
+fCheckandSet ()
+{
+       #This line gathers the current pref key value
+       currentSetting=$(default read /Library/Preferences/com.apple.loginwindow
+SHOWFULLNAME)
+       echo "Current setting is ${currentSetting}"
+       #This if statement checks if the value is anything other than what we expect.
+       if "${currentSetting}" != "0"; then
+               echo "Current setting is not as expected, writing new key value"
+               defaults write /Library/Preferences/com.apple.loginwindow SHOWFULLNAME 0
+else 
+exit 0 fi 
+fValidate 
+}
+fValidate ()
+{
+       #This line reads the newly set pref key
+       currentSettingValidation=$(default read /Library/Preferences/com.apple.loginwindow
+SHOWFULLNAME)
+       #This if statement validates the pref key is set to the expected value
+       if "${currentSettingValidation}" = "0"; then
+               echo "Pref set correct
