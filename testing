@@ -8,7 +8,8 @@ fCheckandSet ()
 SHOWFULLNAME)
        echo "Current setting is ${currentSetting}"
        #This if statement checks if the value is anything other than what we expect.
-       if "${currentSetting}" != "0"; then
+       if "${currentSetting}" != "0"; 
+       then
                echo "Current setting is not as expected, writing new key value"
                defaults write /Library/Preferences/com.apple.loginwindow SHOWFULLNAME 0
 else 
@@ -21,5 +22,6 @@ fValidate ()
        currentSettingValidation=$(default read /Library/Preferences/com.apple.loginwindow
 SHOWFULLNAME)
        #This if statement validates the pref key is set to the expected value
-       if "${currentSettingValidation}" = "0"; then
+       if "${currentSettingValidation}" = "0"; 
+       then
                echo "Pref set correct
